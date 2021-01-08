@@ -12,6 +12,8 @@ module.exports = {
           },
         },
   ],
+  head: [
+    ['link', { rel: 'icon', href: './logo.png' }]],
   base: '/vuepressNote/',
   themeConfig: {
     nav: [
