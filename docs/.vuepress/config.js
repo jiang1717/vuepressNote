@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Road to Cover',
-  description: '',
+  description: 'Good Good Study',
   plugins: [
         '@vuepress/back-to-top',
         '@vuepress/last-updated0',
