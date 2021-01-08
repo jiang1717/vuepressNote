@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: null
+heroImage: ./加油鸭.jpg
 heroText: 性感的笔记本
 tagline: Road to Cover
 actionText: 好好学习！w(ﾟДﾟ)w 
