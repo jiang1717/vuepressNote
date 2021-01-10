@@ -14,7 +14,7 @@ module.exports = {
   ],
   head: [
     ['link', { rel: 'icon', href: './logo.png' }]],
-  base: '/vuepressNote/',
+  base: '/',
   themeConfig: {
     nav: [
       { text: 'JavaSE', link: '/JavaSE/' },
