@@ -12,55 +12,99 @@ module.exports = {
           },
         },
   ],
-  head: [
-    ['link', { rel: 'icon', href: './logo.png' }]],
+  head: [['link', { rel: 'icon', href: './logo.png' }]],
   base: '/',
   themeConfig: {
-    nav: [
-      { text: 'JavaSE', link: '/JavaSE/' },
-      { text: 'MySQL', link: '/MySQL/'},
-      { text: 'Redis', link: '/Redis/'},
-      { text: '计算机网络', link: '/Network/'},
-      { text: '操作系统', link: '/OperatingSystem/' },
-      { text: '数据结构与算法', link: '/DataStructure/'}
-    ],
     displayAllHeaders: false,
     sidebarDepth: 2, // 侧边栏显示2级
+    lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间
     collapsable: true,
     docsRepo: 'jiang1717/vuepressNote/',
     docsDir: '/',
+    nav: [
+      { text: '主页', link: '/' },
+      { text: '后端学习',
+        items:[
+	{text: 'Java', link: '/be/java/'},
+	{text: 'JVM', link: '/be/JVM/'},
+	{text: 'MySQL', link: '/be/mysql/'},
+	{text: '设计模式', link: '/be/designPattern/'},
+	{text: 'Redis', link: '/be/redis/'}
+        ] ,},
+      { text: '基础学习',
+        items:[
+	{text: '计算机网络', link: '/fundamental/network/'},
+	{text: '操作系统', link: '/fundamental/operatingSystem/'}
+        ] ,},
+      { text: '算法学习',
+        items:[
+	{text: '剑指offer', link: '/algorithm/swoffer/'},
+	{text: 'leetcode', link: '/algorithm/leetcode/'}
+        ] ,}
+    ],
+
     sidebar:{
 
-      '/JavaSE/':[
+      '/be/java/':[
         {
-          title: 'Java基础知识',  //组名
+          title: 'Java基础',  //组名
           children: ['基础01', '基础02', '基础03', '基础04'],   //该分组下要显示的文件的目录
         },
         {
-          title: 'Java集合框架',
-          children: ['02_Java集合框架'],
+          title: 'Java集合',
+          children: ['02_Java集合'],
         },
         {
           title: 'Java多线程',
           children: ['03_Java多线程'],
-        },
-        {
-          title: 'Java虚拟机',
-          children: ['04_Java虚拟机'],
-        },
-        {
-          title: '设计模式',
-          children: ['05_设计模式'],
         }],
 
-       '/DataStructure/':[
+        '/be/JVM/':[
+        {
+          title: 'Java虚拟机',  //组名
+          children: [ ],   //该分组下要显示的文件的目录
+        }],
+
+        '/be/mysql/':[
+        {
+          title: 'MySQL',  //组名
+          children: [ ],   //该分组下要显示的文件的目录
+        }],
+
+        '/be/designPattern/':[
+        {
+          title: '设计模式',  //组名
+          children: [ ],   //该分组下要显示的文件的目录
+        }],
+
+        '/be/redis/':[
+        {
+          title: 'Redis',  //组名
+          children: [ ],   //该分组下要显示的文件的目录
+        }],
+
+        '/fundamental/network/':[
+        {
+          title: '计算机网络',  //组名
+          children: [ ],   //该分组下要显示的文件的目录
+        }],
+
+        '/fundamental/operatingSystem/':[
+        {
+          title: '操作系统',  //组名
+          children: [ ],   //该分组下要显示的文件的目录
+        }],
+
+        '/algorithm/swoffer/':[
         {
           title: '剑指offer',  //组名
           children: ['剑指001', '剑指002'],   //该分组下要显示的文件的目录
-        },
+        }],
+
+       '/algorithm/leetcode/':[
         {
           title: 'leetcode',
-          children: ['leetcode'],
+          children: [ ],
         }],
     }
   }
