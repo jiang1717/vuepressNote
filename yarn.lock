@@ -7462,6 +7462,11 @@ uuid@^3.3.2, uuid@^3.4.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
+v-dialogs@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/v-dialogs/-/v-dialogs-2.1.4.tgz#92225e750be1a3ff6dfdc6db43d403999b163004"
+  integrity sha512-fCOEligjt1Qmt9YneyYKV8tFU5+KuzWcpSRgeYH/9KQ1koU5U9WhiQ2g8+zEWHW6YwtAJAoVJyia7gm/xk6t6w==
+
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"

@@ -97,8 +97,8 @@ module.exports = {
 
         '/algorithm/swoffer/':[
         {
-          title: '剑指offer',  //组名
-          children: ['剑指001', '剑指002'],   //该分组下要显示的文件的目录
+          title: 'LinkedList',  //组名
+          children: ['003',],   //该分组下要显示的文件的目录
         }],
 
        '/algorithm/leetcode/':[

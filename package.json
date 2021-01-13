@@ -5,6 +5,7 @@
   "repository": "git@github.com:jiang1717/vuepressNote.git",
   "license": "MIT",
   "devDependencies": {
+    "v-dialogs": "^2.1.4",
     "vuepress": "^1.8.0"
   },
   "scripts": {
