@@ -98,7 +98,7 @@ module.exports = {
         '/algorithm/swoffer/':[
         {
           title: 'LinkedList',  //组名
-          children: ['003', '014', '015'],   //该分组下要显示的文件的目录
+          children: ['003', '014', '015', '016', '025', '036'],   //该分组下要显示的文件的目录
         }],
 
        '/algorithm/leetcode/':[
