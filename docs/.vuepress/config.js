@@ -52,7 +52,7 @@ module.exports = {
         },
         {
           title: 'Java集合',
-          children: ['集合01'],
+          children: ['集合01', '集合02', '集合03'],
         },
         {
           title: 'Java多线程',
