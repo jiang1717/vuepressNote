@@ -40,6 +40,12 @@ module.exports = {
         items:[
 	{text: '剑指offer', link: '/algorithm/swoffer/'},
 	{text: 'leetcode', link: '/algorithm/leetcode/'}
+        ] ,},
+      { text: '框架学习',
+        items:[
+	{text: 'Spring', link: '/framework/Spring/'},
+	{text: 'SpringMVC', link: '/framework/SpringMVC/'},
+	{text: 'MyBatis', link: '/framework/MyBatis/'}
         ] ,}
     ],
 
@@ -99,11 +105,33 @@ module.exports = {
         {
           title: 'LinkedList',  //组名
           children: ['003', '014', '015', '016', '025', '036', '055', '056'],   //该分组下要显示的文件的目录
+        },
+        {
+          title: 'Tree',  //组名
+          children: ['004', '017'],   //该分组下要显示的文件的目录
         }],
 
        '/algorithm/leetcode/':[
         {
           title: 'leetcode',
+          children: [ ],
+        }],
+
+       '/framework/Spring/':[
+        {
+          title: 'Spring',
+          children: ['Spring', ],
+        }],
+
+       '/framework/SpringMVC/':[
+        {
+          title: 'SpringMVC',
+          children: [ ],
+        }],
+
+       '/framework/MyBatis/':[
+        {
+          title: 'MyBatis',
           children: [ ],
         }],
     }
