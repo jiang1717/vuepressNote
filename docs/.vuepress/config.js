@@ -108,7 +108,7 @@ module.exports = {
         },
         {
           title: 'Tree',  //组名
-          children: ['tree', '004', '017', '018', '022'],   //该分组下要显示的文件的目录
+          children: ['tree', '004', '017', '018', '022', '023'],   //该分组下要显示的文件的目录
         }],
 
        '/algorithm/leetcode/':[

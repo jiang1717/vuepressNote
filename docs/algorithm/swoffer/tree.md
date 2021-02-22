@@ -18,7 +18,7 @@ public class TreeNode {
 
 TreeNode是经典的二叉树节点，在数据的序列化和反序列按照层遍历来处理的。
 
-![tree-1](figure/tree-1.png)
+![tree-1](./figure/tree-1.png)
 
 以上二叉树会被序列化为 {1,2,3,#,#,4,#,#,5}
 1：root节点1，是第一层
@@ -45,7 +45,7 @@ public class TreeLinkNode {
 
 在TreeNode的基础上，额外横向增加一个链接节点，数据的序列化格式在TreeNode的基础上，额外增加next节点的数据，图中红色链路为next
 
-![tree-2](figure/tree-2.png)
+![tree-2](./figure/tree-2.png)
 
 上图中2节点的next为3节点，以上链接二叉树会被序列化为 {[1,2,3,#,#,4,#,#,5],[#,3,#,#,#]}
 
