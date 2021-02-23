@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ConcurrentHashMap 和 Hashtable 的区别 | Road to Cover</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="./logo.png">
+    <meta name="description" content="Good Good Study">
+    
+    <link rel="preload" href="/assets/css/0.styles.0535aee9.css" as="style"><link rel="preload" href="/assets/js/app.1bfd9c9a.js" as="script"><link rel="preload" href="/assets/js/2.f0529c3c.js" as="script"><link rel="preload" href="/assets/js/13.6caea63b.js" as="script"><link rel="prefetch" href="/assets/js/10.7dd6f88b.js"><link rel="prefetch" href="/assets/js/11.8d4ce580.js"><link rel="prefetch" href="/assets/js/12.e83810c2.js"><link rel="prefetch" href="/assets/js/14.ba242f77.js"><link rel="prefetch" href="/assets/js/15.4d046412.js"><link rel="prefetch" href="/assets/js/16.5ad78a75.js"><link rel="prefetch" href="/assets/js/17.38e220a1.js"><link rel="prefetch" href="/assets/js/18.c25854af.js"><link rel="prefetch" href="/assets/js/19.0266cbf6.js"><link rel="prefetch" href="/assets/js/20.28573995.js"><link rel="prefetch" href="/assets/js/21.6041a928.js"><link rel="prefetch" href="/assets/js/22.4b12e26d.js"><link rel="prefetch" href="/assets/js/23.5c3880f2.js"><link rel="prefetch" href="/assets/js/24.0afe327e.js"><link rel="prefetch" href="/assets/js/25.42a2eb7e.js"><link rel="prefetch" href="/assets/js/26.d0834f34.js"><link rel="prefetch" href="/assets/js/27.4bb12e81.js"><link rel="prefetch" href="/assets/js/28.c46baaf6.js"><link rel="prefetch" href="/assets/js/29.b69e0189.js"><link rel="prefetch" href="/assets/js/3.d7d28dc9.js"><link rel="prefetch" href="/assets/js/30.84f0a255.js"><link rel="prefetch" href="/assets/js/31.0f85af87.js"><link rel="prefetch" href="/assets/js/32.31ef9ec1.js"><link rel="prefetch" href="/assets/js/33.ec0535ff.js"><link rel="prefetch" href="/assets/js/34.b473ed08.js"><link rel="prefetch" href="/assets/js/35.3dfa76c0.js"><link rel="prefetch" href="/assets/js/36.ff608c3a.js"><link rel="prefetch" href="/assets/js/37.b4959ee3.js"><link rel="prefetch" href="/assets/js/38.d9b88106.js"><link rel="prefetch" href="/assets/js/39.fe989238.js"><link rel="prefetch" href="/assets/js/4.5f2b9ab4.js"><link rel="prefetch" href="/assets/js/40.26866356.js"><link rel="prefetch" href="/assets/js/41.93d83753.js"><link rel="prefetch" href="/assets/js/42.9b2ea3be.js"><link rel="prefetch" href="/assets/js/43.cb54056b.js"><link rel="prefetch" href="/assets/js/44.9289d308.js"><link rel="prefetch" href="/assets/js/45.b4b3ae0d.js"><link rel="prefetch" href="/assets/js/46.141f1aeb.js"><link rel="prefetch" href="/assets/js/47.d0ac35cf.js"><link rel="prefetch" href="/assets/js/48.04ae71a5.js"><link rel="prefetch" href="/assets/js/49.1415a852.js"><link rel="prefetch" href="/assets/js/5.d9743663.js"><link rel="prefetch" href="/assets/js/50.89afa5c8.js"><link rel="prefetch" href="/assets/js/51.193ccf5f.js"><link rel="prefetch" href="/assets/js/52.bd2e83ec.js"><link rel="prefetch" href="/assets/js/53.b75d7949.js"><link rel="prefetch" href="/assets/js/54.4b8528a9.js"><link rel="prefetch" href="/assets/js/55.fe2003b7.js"><link rel="prefetch" href="/assets/js/56.46a5b513.js"><link rel="prefetch" href="/assets/js/57.263b25bf.js"><link rel="prefetch" href="/assets/js/58.fbb17448.js"><link rel="prefetch" href="/assets/js/59.f18c41ad.js"><link rel="prefetch" href="/assets/js/6.4774d119.js"><link rel="prefetch" href="/assets/js/7.4af302e3.js"><link rel="prefetch" href="/assets/js/8.96ce0f0f.js"><link rel="prefetch" href="/assets/js/9.f4658ef5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0535aee9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Road to Cover</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端学习" class="dropdown-title"><span class="title">后端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端学习" class="mobile-dropdown-title"><span class="title">后端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/be/java/" class="nav-link router-link-active">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/be/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/be/mysql/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/be/designPattern/" class="nav-link">
+  设计模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础学习" class="dropdown-title"><span class="title">基础学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础学习" class="mobile-dropdown-title"><span class="title">基础学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/fundamental/network/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/fundamental/operatingSystem/" class="nav-link">
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法学习" class="dropdown-title"><span class="title">算法学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法学习" class="mobile-dropdown-title"><span class="title">算法学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/algorithm/swoffer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-item"><!----> <a href="/algorithm/leetcode/" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架学习" class="dropdown-title"><span class="title">框架学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架学习" class="mobile-dropdown-title"><span class="title">框架学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/framework/spring/" class="nav-link">
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/framework/springmvc/" class="nav-link">
+  SpringMVC
+</a></li><li class="dropdown-item"><!----> <a href="/framework/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/framework/redis/" class="nav-link">
+  Redis
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/jiang1717" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端学习" class="dropdown-title"><span class="title">后端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端学习" class="mobile-dropdown-title"><span class="title">后端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/be/java/" class="nav-link router-link-active">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/be/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/be/mysql/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/be/designPattern/" class="nav-link">
+  设计模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础学习" class="dropdown-title"><span class="title">基础学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础学习" class="mobile-dropdown-title"><span class="title">基础学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/fundamental/network/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/fundamental/operatingSystem/" class="nav-link">
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法学习" class="dropdown-title"><span class="title">算法学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法学习" class="mobile-dropdown-title"><span class="title">算法学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/algorithm/swoffer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-item"><!----> <a href="/algorithm/leetcode/" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架学习" class="dropdown-title"><span class="title">框架学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架学习" class="mobile-dropdown-title"><span class="title">框架学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/framework/spring/" class="nav-link">
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/framework/springmvc/" class="nav-link">
+  SpringMVC
+</a></li><li class="dropdown-item"><!----> <a href="/framework/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/framework/redis/" class="nav-link">
+  Redis
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/jiang1717" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Java集合</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/be/java/集合01.html" class="sidebar-link">集合框架据结构总结</a></li><li><a href="/be/java/集合02.html" class="sidebar-link">Arraylist 与 LinkedList</a></li><li><a href="/be/java/集合03.html" class="sidebar-link">ArrayList 与 Vector</a></li><li><a href="/be/java/集合04.html" class="sidebar-link">HashMap的底层实现</a></li><li><a href="/be/java/集合05.html" class="sidebar-link">HashMap 和 Hashtable 的区别</a></li><li><a href="/be/java/集合06.html" class="sidebar-link">HashMap的长度为什么是2的幂次方</a></li><li><a href="/be/java/集合07.html" class="sidebar-link">HashMap 多线程操作导致死循环问题</a></li><li><a href="/be/java/集合08.html" class="sidebar-link">HashSet和HashMap区别</a></li><li><a href="/be/java/集合09.html" class="active sidebar-link">ConcurrentHashMap 和 Hashtable 的区别</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java多线程</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="concurrenthashmap-和-hashtable-的区别"><a href="#concurrenthashmap-和-hashtable-的区别" class="header-anchor">#</a> ConcurrentHashMap 和 Hashtable 的区别</h1> <p>ConcurrentHashMap 和 Hashtable 的区别主要体现在实现线程安全的方式上不同。</p> <p><strong>底层数据结构：</strong></p> <p>JDK1.7的 ConcurrentHashMap 底层采用 <strong>分段的数组+链表</strong> 实现，JDK1.8 采用的数据结构跟HashMap1.8的结构一样，<strong>数组+链表/红黑二叉树</strong> 。</p> <p>Hashtable 和 JDK1.8 之前的 HashMap 的底层数据结构类似都是采用 <strong>数组+链表</strong> 的形式，数组是主体，链表则是主要为了解决哈希冲突而存在的；</p> <p><strong>实现线程安全的方式（重要）：</strong></p> <p>① 在JDK1.7的时候，<strong>ConcurrentHashMap</strong>（分段锁）对整个桶数组进行了分割分段(Segment)，每一把锁只锁容器其中一部分数据，多线程访问容器里不同数据段的数据，就不会存在锁竞争，提高并发访问率。到了JDK1.8 的时候已经摒弃了Segment的概念，而是直接用 <strong>Node 数组+链表+红黑树</strong> 的数据结构来实现，并发控制使用synchronized和CAS来操作。（JDK1.6以后 对synchronized锁做了很多优化）整个看起来就像是优化过且线程安全的 HashMap，虽然在JDK1.8中还能看到 Segment 的数据结构，但是已经简化了属性，只是为了兼容旧版本；</p> <p>② Hashtable(同一把锁) :使用 synchronized 来保证线程安全，效率非常低下。当一个线程访问同步方法时，其他线程也访问同步方法，可能会进入阻塞或轮询状态，如使用put 添加元素，另一个线程不能使用 put 添加元素，也不能使用 get，竞争会越来越激烈效率越低。</p> <p><img src="/assets/img/hashmap-7.a62a6a44.jpg" alt="hashmap-7"></p> <p><strong>ConcurrentHashMap线程安全的具体实现方式/底层具体实现：</strong></p> <p>**jdk1.7：**上图右边的结构，首先将数据分为一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据时，其他段的数据也能被其他线程访问。</p> <p>ConcurrentHashMap 是由 Segment 数组结构和 HashEntry 数组结构组成。Segment 实现了 ReentrantLock，所以 Segment 是一种可重入锁，扮演锁的角色。HashEntry 用于存储键值对数据。</p> <p>一个 ConcurrentHashMap 里包含一个 Segment 数组。Segment 的结构和HashMap类似，是一种数组和链表结构，一个 Segment 包含一个 HashEntry 数组，每个 HashEntry 是一个链表结构的元素，每个 Segment 守护着一个HashEntry数组里的元素，当对 HashEntry 数组的数据进行修改时，必须首先获得对应的 Segment的锁。</p> <p><strong>jdk1.8：</strong></p> <p>JDK1.8的ConcurrentHashMap（TreeBin: 红黑二叉树节点 Node: 链表节点）：</p> <p><img src="/assets/img/hashmap-8.7b2fbcce.png" alt="hashmap-8"></p> <p>ConcurrentHashMap取消了Segment分段锁，采用CAS和synchronized来保证并发安全。数据结构跟HashMap1.8的结构类似，数组+链表/红黑二叉树。</p> <p>synchronized只锁定当前链表或红黑二叉树的首节点，这样只要hash不冲突，就不会产生并发，效率又提升N倍。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">2/23/2021, 12:16:02 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/be/java/集合08.html" class="prev">
+        HashSet和HashMap区别
+      </a></span> <span class="next"><a href="/be/java/03_Java多线程.html">
+        Java多线程
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.1bfd9c9a.js" defer></script><script src="/assets/js/2.f0529c3c.js" defer></script><script src="/assets/js/13.6caea63b.js" defer></script>
+  </body>
+</html>
