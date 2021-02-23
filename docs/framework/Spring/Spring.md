@@ -216,7 +216,6 @@ public class Hello {
         <property name="str" value="Spring"/>
     </bean>
 </beans>
-123456789101112131415161718192021
 ```
 
 测试类MyTest
@@ -282,7 +281,6 @@ IoC：炒菜这件事，不再由你自己来做，而是委托给了第三方__
     </bean>
 
 </beans>
-123456789101112131415
 ```
 
 第一个module改良后测试
@@ -300,7 +298,6 @@ public class MyTest0 {
 		userServiceImpl.getUser();
 	}
 }
-123456789101112
 ```
 
 **总结：**
