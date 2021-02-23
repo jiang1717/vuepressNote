@@ -3,8 +3,7 @@ module.exports = {
   description: 'Good Good Study',
   plugins: [
         '@vuepress/back-to-top',
-        '@vuepress/last-updated0',
-        ['vuepress-plugin-mathjax'],
+        '@vuepress/last-updated',
         {
           target: 'chtml',
           macros: {
@@ -21,6 +20,7 @@ module.exports = {
     collapsable: true,
     docsRepo: 'jiang1717/vuepressNote/',
     docsDir: '/',
+
     nav: [
       { text: '主页', link: '/' },
       { text: '后端学习',
@@ -46,7 +46,8 @@ module.exports = {
 	{text: 'SpringMVC', link: '/framework/springmvc/'},
 	{text: 'MyBatis', link: '/framework/mybatis/'},
 	{text: 'Redis', link: '/framework/redis/'}
-        ] ,}
+        ] ,},
+       {text: 'Github', link: 'https://github.com/jiang1717' }
     ],
 
     sidebar:{

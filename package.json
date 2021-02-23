@@ -5,6 +5,7 @@
   "repository": "git@github.com:jiang1717/vuepressNote.git",
   "license": "MIT",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.2",
     "v-dialogs": "^2.1.4",
     "vuepress": "^1.8.0"
   },
