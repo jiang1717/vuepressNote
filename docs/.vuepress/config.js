@@ -28,8 +28,7 @@ module.exports = {
 	{text: 'Java', link: '/be/java/'},
 	{text: 'JVM', link: '/be/JVM/'},
 	{text: 'MySQL', link: '/be/mysql/'},
-	{text: '设计模式', link: '/be/designPattern/'},
-	{text: 'Redis', link: '/be/redis/'}
+	{text: '设计模式', link: '/be/designPattern/'}
         ] ,},
       { text: '基础学习',
         items:[
@@ -43,9 +42,10 @@ module.exports = {
         ] ,},
       { text: '框架学习',
         items:[
-	{text: 'Spring', link: '/framework/Spring/'},
-	{text: 'SpringMVC', link: '/framework/SpringMVC/'},
-	{text: 'MyBatis', link: '/framework/MyBatis/'}
+	{text: 'Spring', link: '/framework/spring/'},
+	{text: 'SpringMVC', link: '/framework/springmvc/'},
+	{text: 'MyBatis', link: '/framework/mybatis/'},
+	{text: 'Redis', link: '/framework/redis/'}
         ] ,}
     ],
 
@@ -83,12 +83,6 @@ module.exports = {
           children: [ ],   //该分组下要显示的文件的目录
         }],
 
-        '/be/redis/':[
-        {
-          title: 'Redis',  //组名
-          children: [ ],   //该分组下要显示的文件的目录
-        }],
-
         '/fundamental/network/':[
         {
           title: '计算机网络',  //组名
@@ -117,22 +111,28 @@ module.exports = {
           children: [ ],
         }],
 
-       '/framework/Spring/':[
+       '/framework/spring/':[
         {
           title: 'Spring',
-          children: ['Spring', ],
+          children: ['spring', ],
         }],
 
-       '/framework/SpringMVC/':[
+       '/framework/springmvc/':[
         {
           title: 'SpringMVC',
-          children: [ ],
+          children: ['springmvc', ],
         }],
 
-       '/framework/MyBatis/':[
+       '/framework/mybatis/':[
         {
           title: 'MyBatis',
-          children: [ ],
+          children: ['mybatis', ],
+        }],
+
+        '/framework/redis/':[
+        {
+          title: 'Redis',  //组名
+          children: ['redis', ],   //该分组下要显示的文件的目录
         }],
     }
   }
