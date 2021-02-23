@@ -2,11 +2,13 @@
 
 [Kuang shen Spring study in bilibili](https://www.bilibili.com/video/BV1WE411d7Dv?p=1)
 
-## 1、Spring
+## 1. Spring
 
-### 1.1、简介
+spring理念：使现有的技术更加容易使用，本身是一个大杂烩。
 
-![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvMjAyMDA4MDEwMjUxMzkucG5n?x-oss-process=image/format,png)
+- SSH：Struct2 + Spring + Hibernate
+- SSM: SpringMVC + Spring + Mybatis
+
 spring官网： https://spring.io/projects/spring-framework#overview
 
 官方下载： https://repo.spring.io/release/org/springframework/spring/
@@ -29,10 +31,7 @@ Spring Web MVC： [spring-webmvc最新版](https://mvnrepository.com/artifact/or
     <artifactId>spring-jdbc</artifactId>
     <version>5.2.7.RELEASE</version>
 </dependency>
-12345678910111213
 ```
-
-### 1.2、优点
 
 - Spring是一个开源的免费框架（容器）！
 - Spring是一个轻量级的非入侵式的框架
@@ -41,20 +40,18 @@ Spring Web MVC： [spring-webmvc最新版](https://mvnrepository.com/artifact/or
 
 开源免费容器，轻量级非侵入式，控制反转，面向切面，支持事务，支持框架整合
 
-Spring是一个轻量级的控制反转(IOC)和面向切面(AOP)编程的框架
+总结：Spring是一个轻量级的控制反转(IOC)和面向切面(AOP)编程的框架
 
-### 1.3、组成
+**组成**
 
 ![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvU3ByaW5nNyVFNSVBNCVBNyVFNiVBOCVBMSVFNSU5RCU5Ny5wbmc?x-oss-process=image/format,png)
-
-### 1.4、扩展
 
 现代化的java开发 -> 基于Spring的开发
 
 ![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvMjAyMDA4MDEwMzA4MjAucG5n?x-oss-process=image/format,png)
 ![image-20200801031429514](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDEwMzE0Mjk1MTQucG5n?x-oss-process=image/format,png)
 
-## 2、IOC理论推导
+## 2. IOC理论推导
 
 传统的调用
 
@@ -65,9 +62,8 @@ Spring是一个轻量级的控制反转(IOC)和面向切面(AOP)编程的框架
    public interface UserDao {
    	void getUser();
    }
-   1234
    ```
-
+   
 2. UserDaoImp
 
    ```java
@@ -77,9 +73,8 @@ Spring是一个轻量级的控制反转(IOC)和面向切面(AOP)编程的框架
    		System.out.println("默认获取用户数据");	
    	}
    }
-   123456
    ```
-
+   
 3. UserSevice
 
    ```java
@@ -87,9 +82,8 @@ Spring是一个轻量级的控制反转(IOC)和面向切面(AOP)编程的框架
    public interface UserService {
    	void getUser();
    }
-   1234
    ```
-
+   
 4. UserServiceImp
 
    ```java
@@ -103,7 +97,6 @@ Spring是一个轻量级的控制反转(IOC)和面向切面(AOP)编程的框架
    			userDao.getUser();
    		}	
    }
-   12345678910
    ```
 
 测试
@@ -120,7 +113,6 @@ public class MyTest0 {
 		userService.getUser();
 	}
 }
-1234567891011
 ```
 
 在我们之前的业务中，用户的需求可能会影响我们原来的代码，我们需要根据用户的需求去修改原代码！如果程序代码量十分大，修改一次的成本代价十分昂贵！
@@ -135,7 +127,6 @@ private UserDao userDao;
 public void setUserDao(UserDao userDao){
     this.userDao = userDao;
 }
-123456
 ```
 
 set() 方法实际上是动态改变了 UserDao userDao 的 初始化部分（**new UserDaoImpl()**）
@@ -144,7 +135,6 @@ set() 方法实际上是动态改变了 UserDao userDao 的 初始化部分（**
 
 ```java
 ((UserServiceImpl)userService).setUserDao(new UserDaoImpl());
-1
 ```
 
 - 之前，程序是主动创建对象！**控制权在程序猿手上**！
@@ -158,14 +148,14 @@ set() 方法实际上是动态改变了 UserDao userDao 的 初始化部分（**
 
 ![image-20200801122805769](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDExMjI4MDU3NjkucG5n?x-oss-process=image/format,png)
 
-### IOC本质
+**IOC本质**
 
 ![image-20200801123518974](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDExMjM1MTg5NzQucG5n?x-oss-process=image/format,png)
 ![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvMjAyMDA4MDExMjMyMzUucG5n?x-oss-process=image/format,png)
 ![image-20200801123348207](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDExMjMzNDgyMDcucG5n?x-oss-process=image/format,png)
 ![image-20200801123450897](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDExMjM0NTA4OTcucG5n?x-oss-process=image/format,png)
 
-## 3、HolleSpring
+## 3. HolleSpring
 
 在父模块中导入jar包
 
@@ -176,7 +166,6 @@ set() 方法实际上是动态改变了 UserDao userDao 的 初始化部分（**
 	<artifactId>spring-webmvc</artifactId>
 	<version>5.2.7.RELEASE</version>
 </dependency>
-123456
 ```
 
 pojo的Hello.java
@@ -201,8 +190,6 @@ public class Hello {
 		return "Holle [str=" + str + "]";
 	}
 }
-
-1234567891011121314151617181920
 ```
 
 在resource里面的xml配置
@@ -253,7 +240,6 @@ public class MyTest {
 	}
 
 }
-123456789101112131415161718
 ```
 
 核心用set注入，所以必须要有下面的se()方法
@@ -263,7 +249,6 @@ public class MyTest {
 public void setStr(String str) {
 		this.str = str;
 	}
-1234
 ```
 
 **思考：**
@@ -278,8 +263,6 @@ IOC：对象由Spring 来创建，管理，装配！
 IoC：炒菜这件事，不再由你自己来做，而是委托给了第三方__餐厅来做
 
 此时的区别就是，如果我还需要做其他的菜，我不需要自己搞菜谱买材料再做好，而是告诉餐厅，我要什么菜，什么时候要，你做好送来
-
-.
 
 在前面第一个module试试引入Spring
 
@@ -328,7 +311,7 @@ public class MyTest0 {
 
 容器里面取得的bean，拿出来就是一个对象，用对象调用方法即可；
 
-## 4、IOC创建对象的方式
+## 4. IOC创建对象的方式
 
 1. 使用无参构造创建对象，默认。
 2. 使用有参构造（如下）
@@ -348,7 +331,6 @@ index指的是有参构造中参数的下标，下标从0开始;
         <constructor-arg index="0" value="chen"/>
     </bean>
 </beans>
-12345678910
 ```
 
 类型赋值（不建议使用）
@@ -357,7 +339,6 @@ index指的是有参构造中参数的下标，下标从0开始;
 <bean id="user" class="pojo.User">
     <constructor-arg type="java.lang.String" value="kuang"/>
 </bean>
-123
 ```
 
 直接通过参数名（掌握）
@@ -367,7 +348,6 @@ index指的是有参构造中参数的下标，下标从0开始;
     <constructor-arg name="name" value="kuang"></constructor-arg>
 </bean>
 <!-- 比如参数名是name，则有name="具体值" -->
-1234
 ```
 
 注册bean之后就对象的初始化了（**类似 new 类名()**）
@@ -382,14 +362,13 @@ name方式还需要无参构造和set方法,index和type只需要有参构造
 User user = (User) context.getBean("user");
 User user2 = (User) context.getBean("user");
 system.out.println(user == user2)//结果为true
-123
 ```
 
 总结：在配置文件加载的时候，容器(< bean>)中管理的对象就已经初始化了
 
-## 5、Spring配置
+## 5. Spring配置
 
-### 5.1、别名
+**别名**
 
 ```xml
 <bean id="user" class="pojo.User">
@@ -400,10 +379,9 @@ system.out.println(user == user2)//结果为true
 <!-- 使用时
 	User user2 = (User) context.getBean("userLove");	
 -->
-12345678
 ```
 
-### 5.2、Bean的配置
+**Bean的配置** 
 
 ```xml
 <!--id：bean的唯一标识符，也就是相当于我们学的对象名
@@ -415,10 +393,9 @@ name：也是别名，而且name可以同时取多个别名 -->
 <!-- 使用时
 	User user2 = (User) context.getBean("u1");	
 -->
-123456789
 ```
 
-### 5.3、import
+**import** 
 
 import一般用于团队开发使用，它可以将多个配置文件，导入合并为一个
 
@@ -437,7 +414,6 @@ import一般用于团队开发使用，它可以将多个配置文件，导入�
   <import resource="beans.xm1"/>
   <import resource="beans2.xml"/>
   <import resource="beans3.xm1"/>
-  123
   ```
 
 **使用的时候，直接使用总的配置就可以了**
@@ -446,13 +422,15 @@ import一般用于团队开发使用，它可以将多个配置文件，导入�
 
 按照在总的xml中的导入顺序来进行创建，后导入的会重写先导入的，最终实例化的对象会是后导入xml中的那个
 
-## 6、依赖注入（DI）
 
-### 6.1、构造器注入
+
+## 6. 依赖注入（DI）
+
+**构造器注入**
 
 第4点有提到
 
-### 6.2、set方式注入【重点】
+**set方式注入【重点】**
 
 依赖注入：set注入！
 
@@ -511,7 +489,6 @@ public class Student {
                 '}';
     }
 }
-123456789101112131415161718192021222324252627282930313233
 ```
 
 Address类
@@ -538,7 +515,6 @@ public class Address {
                 '}';
     }
 }
-123456789101112131415161718192021
 ```
 
 beans.xml
@@ -610,7 +586,6 @@ beans.xml
 		</property>
 	</bean>
 </beans>
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566
 ```
 
 MyTest3
@@ -627,10 +602,9 @@ public class MyTest3 {
 		System.out.println(stu.toString());
 	}	
 }
-1234567891011
 ```
 
-### 6.3、拓展注入
+**拓展注入**
 
 官方文档位置
 
@@ -707,7 +681,7 @@ System.out.println(user.toString());
 123
 ```
 
-### 6.4、Bean作用域
+**Bean作用域**
 
 ![image-20200802143401165](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDIxNDM0MDExNjUucG5n?x-oss-process=image/format,png)
 
@@ -717,7 +691,6 @@ System.out.println(user.toString());
 
    ```xml
    <bean id="user2" class="pojo.User" c:name="cxk" c:age="19" scope="singleton"></bean>
-   1
    ```
 
 ![image-20200802143802005](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDIxNDM4MDIwMDUucG5n?x-oss-process=image/format,png)
@@ -727,14 +700,13 @@ System.out.println(user.toString());
 
    ```xml
    <bean id="user2" class="pojo.User" c:name="cxk" c:age="19" scope="prototype"></bean>
-   1
    ```
 
 ![image-20200802143826227](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDIxNDM4MjYyMjcucG5n?x-oss-process=image/format,png)
 
 1. 其余的request、session、application这些只能在web开放中使用！
 
-## 7、Bean的自动装配
+## 7. Bean的自动装配
 
 - 自动装配是Spring满足bean依赖的一种方式
 - Spring会在上下文自动寻找，并自动给bean装配属性
@@ -762,10 +734,9 @@ System.out.println(user.toString());
    <bean id="cat1" class="pojo.Cat"/>
    <bean id="cat2" class="pojo.Cat"/>
    找不到 id=cat，且有两个Cat
-   1234
    ```
 
-### 7.1测试：自动装配
+**测试：自动装配**
 
 pojo的Cat类
 
@@ -775,7 +746,6 @@ public class Cat {
         System.out.println("miao");
     }
 }
-12345
 ```
 
 pojo的Dog类
@@ -788,7 +758,6 @@ public class Dog {
     }
 
 }
-1234567
 ```
 
 pojo的People类
@@ -833,7 +802,6 @@ public class People {
                 '}';
     }
 }
-123456789101112131415161718192021222324252627282930313233343536373839
 ```
 
 xml配置 -> byType 自动装配
@@ -856,7 +824,6 @@ xml配置 -> byType 自动装配
     </bean>
 
 </beans>
-1234567891011121314151617
 ```
 
 xml配置 -> byName 自动装配
@@ -871,12 +838,11 @@ xml配置 -> byName 自动装配
 <bean id="people" class="pojo.People" autowire="byName">
 	<property name="name" value="cbh"></property>
 </bean>
-123456789
 ```
 
 弹幕评论：byName只能取到小写，大写取不到
 
-### 7.2、使用注解实现自动装配
+**使用注解实现自动装配**
 
 jdk1.5支持的注解，spring2.5支持的注解
 
@@ -900,10 +866,9 @@ The introduction of annotation-based configuration raised the question of whethe
 
     <context:annotation-config/>
 </beans>
-1234567891011
 ```
 
-#### 7.2.1、@Autowired
+**@Autowired**
 
 **默认是byType方式，如果匹配不上，就会byName**
 
@@ -919,7 +884,6 @@ public class People {
     private Dog dog;
     private String name;
 }
-1234567
 ```
 
 > @Nullable 字段标记了这个注解，说明该字段可以为空
@@ -933,12 +897,11 @@ public class People {
 public @interface Autowired { 
 	boolean required() default true; 
 }
-1234
 ```
 
 如果定义了Autowire的require属性为false，说明这个对象可以为null，否则不允许为空（false表示找不到装配，不抛出异常）
 
-#### 7.2.2、@Autowired+@Qualifier
+**@Autowired+@Qualifier**
 
 **@Autowired不能唯一装配时，需要@Autowired+@Qualifier**
 
@@ -953,14 +916,13 @@ public class People {
     private Dog dog;
     private String name;
 }
-12345678
 ```
 
 弹幕评论：
 
 如果xml文件中同一个对象被多个bean使用，Autowired无法按类型找到，可以用@Qualifier指定id查找
 
-#### 7.2.3、@Resource
+**@Resource**
 
 **默认是byName方式，如果匹配不上，就会byType**
 
@@ -972,7 +934,6 @@ public class People {
     private Dog dog;
     private String name;
 }
-1234567
 ```
 
 弹幕评论：
@@ -981,7 +942,7 @@ Autowired是byType，@Autowired+@Qualifier = byType || byName
 
 Autowired是先byteType,如果唯一則注入，否则byName查找。resource是先byname,不符合再继续byType
 
-#### 区别：
+**区别：**
 
 @Resource和@Autowired的区别：
 
@@ -990,7 +951,7 @@ Autowired是先byteType,如果唯一則注入，否则byName查找。resource是
 - @Resource默认通过byname的方式实现，如果找不到名字，则通过byType实现！如果两个都找不到的情况下，就报错！【常用】
 - 执行顺序不同：@Autowired通过byType的方式实现。@Resource默认通过byname的方式实现
 
-## 8、使用注解开发
+## 8. 使用注解开发
 
 在spring4之后，使用注解开发，必须要保证aop包的导入
 ![image-20200802201924490](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDIyMDE5MjQ0OTAucG5n?x-oss-process=image/format,png)
@@ -1009,10 +970,9 @@ Autowired是先byteType,如果唯一則注入，否则byName查找。resource是
     <context:annotation-config/>
 
 </beans>
-123456789101112
 ```
 
-### 8.1、bean
+**bean**
 
 弹幕评论：
 有了< context:component-scan>，另一个< context:annotation-config/>标签可以移除掉，因为已经被包含进去了。
@@ -1029,10 +989,9 @@ Autowired是先byteType,如果唯一則注入，否则byName查找。resource是
 public class User {  
      public String name ="秦疆";
 }
-123456
 ```
 
-### 8.2、属性如何注入@value
+**属性如何注入@value**
 
 ```java
 @Component
@@ -1047,10 +1006,9 @@ public class User {
         this.name = name; 
     }
 }
-123456789101112
 ```
 
-### 8.3、衍生的注解
+**衍生的注解**
 
 @Component有几个衍生注解，会按照web开发中，mvc架构中分层。
 
@@ -1060,7 +1018,7 @@ public class User {
 
 **这四个注解的功能是一样的，都是代表将某个类注册到容器中**
 
-### 8.4、自动装配置
+**自动装配置**
 
 @Autowired：默认是byType方式，如果匹配不上，就会byName
 
@@ -1068,7 +1026,7 @@ public class User {
 
 @Resource：默认是byName方式，如果匹配不上，就会byType
 
-### 8.5、作用域@scope
+**作用域@scope**
 
 ```java
 //原型模式prototype，单例模式singleton
@@ -1087,10 +1045,9 @@ public class User {
         this.name = name; 
     }
 }
-12345678910111213141516
 ```
 
-### 8.6、小结
+**小结**
 
 **xml与注解：**
 
@@ -1103,7 +1060,9 @@ public class User {
 - 注解只用来完成属性的注入
 - 要开启注解支持
 
-## 9、使用Java的方式配置Spring
+
+
+## 9. 使用Java的方式配置Spring
 
 不使用Spring的xml配置，完全交给java来做！
 
@@ -1133,7 +1092,6 @@ public class User {
         '}'; 
     } 
 }
-1234567891011121314151617181920
 ```
 
 弹幕评论：要么使用@Bean，要么使用@Component和ComponentScan，两种效果一样
@@ -1158,7 +1116,6 @@ public class KuangConfig {
     	return new User(); //就是返回要注入到bean的对象! 
     } 
 }
-123456789101112131415
 ```
 
 弹幕评论：ComponentScan、@Component("pojo”) 这两个注解配合使用
@@ -1174,7 +1131,6 @@ public class MyTest {
     System.out.Println(getUser.getName()); 
     } 
 }
-12345678
 ```
 
 **会创建两个相同对象问题的说明：**
@@ -1197,7 +1153,6 @@ public class KuangConfig {
     	return new User(); //就是返回要注入到bean的对象! 
     } 
 }
-123456789101112131415
 ```
 
 弹幕评论：ComponentScan、@Component("pojo”) 这两个注解配合使用
@@ -1213,14 +1168,13 @@ public class MyTest {
     System.out.Println(getUser.getName()); 
     } 
 }
-12345678
 ```
 
 **会创建两个相同对象问题的说明：**
 
 **弹幕总结 - -> @Bean是相当于< bean>标签创建的对象，而我们之前学的@Component是通过spring自动创建的这个被注解声明的对象，所以这里相当于有两个User对象被创建了。一个是bean标签创建的（@Bean），一个是通过扫描然后使用@Component，spring自动创建的User对象，所以这里去掉@Bean这些东西，然后开启扫描。之后在User头上用@Component即可达到spring自动创建User对象了**
 
-## 10、动态代理
+## 10. 动态代理
 
 代理模式是SpringAOP的底层
 
@@ -1228,7 +1182,7 @@ public class MyTest {
 
 ![image-20200803101427846](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDMxMDE0Mjc4NDYucG5n?x-oss-process=image/format,png)
 
-### 10.1、静态代理
+**静态代理**
 
 ![image-20200803101621868](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDMxMDE2MjE4NjgucG5n?x-oss-process=image/format,png)
 代码步骤：
@@ -1240,7 +1194,6 @@ package pojo;
 public interface Host {
 	public void rent();
 }
-1234
 ```
 
 2、真实角色
@@ -1253,7 +1206,6 @@ public class HostMaster implements Host{
 		System.out.println("房东要出租房子");
 	}
 }
-1234567
 ```
 
 3、代理角色
@@ -1292,7 +1244,6 @@ public class Proxy {
 		System.out.println("签合同");
 	}		
 }
-123456789101112131415161718192021222324252627282930313233
 ```
 
 4、客户端访问代理角色
@@ -1316,7 +1267,6 @@ public class My {
 		
 	}
 }
-123456789101112131415161718
 ```
 
 ![image-20200803105229478](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDMxMDUyMjk0NzgucG5n?x-oss-process=image/format,png)
@@ -1326,7 +1276,7 @@ AOP横向开发
 
 ![image-20200803111539621](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDMxMTE1Mzk2MjEucG5n?x-oss-process=image/format,png)
 
-### 10.2、动态代理
+**动态代理**
 
 动态代理和静态角色一样，动态代理底层是反射机制
 
@@ -1354,7 +1304,6 @@ public interface Host {
 	public void rent();
 	
 }
-123456
 ```
 
 接口Host实现类 HostMaster.java
@@ -1367,7 +1316,6 @@ public class HostMaster implements Host{
 		System.out.println("房东要租房子");
 	}
 }
-1234567
 ```
 
 代理角色的处理程序类 ProxyInvocationHandler.java
@@ -1421,8 +1369,6 @@ public class ProxyInvocationHandler implements InvocationHandler {
 	}
 
 }
-
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849
 ```
 
 用户类 My2.java
@@ -1455,7 +1401,6 @@ public class My2 {
 
 	}
 }
-123456789101112131415161718192021222324252627
 ```
 
 弹幕评论：
@@ -1489,18 +1434,19 @@ public class ProxyInvocationHandler implements InvocationHandler {
 	}
 
 }
-123456789101112131415161718192021222324
 ```
 
 ![image-20200803133035484](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDMxMzMwMzU0ODQlMjAtJTIwJUU1JThBJUE4JUU2JTgwJTgxJUU0JUJCJUEzJUU3JTkwJTg2LnBuZw?x-oss-process=image/format,png)
 
-## 11、AOP
 
-### 11.1、什么是AOP
+
+## 11. AOP
+
+**什么是AOP**
 
 ![image-20200803134502169](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDMxMzQ1MDIxNjklMjAtJTIwQU9QLnBuZw?x-oss-process=image/format,png)
 
-### 11.2、AOP在Spring中的使用
+**AOP在Spring中的使用**
 
 提供声明式事务，允许用户自定义切面
 
@@ -1518,7 +1464,7 @@ SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advi
 ![image-20200803135937435](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDMxMzU5Mzc0MzUucG5n?x-oss-process=image/format,png)
 **即AOP在不改变原有代码的情况下，去增加新的功能。**（代理）
 
-### 11.3、使用Spring实现AOP
+**使用Spring实现AOP**
 
 导入jar包
 
@@ -1529,10 +1475,9 @@ SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advi
     <artifactId>aspectjweaver</artifactId>
     <version>1.9.4</version>
 </dependency>
-123456
 ```
 
-#### 11.3.1、方法一：使用原生spring接口
+* **方法一：使用原生spring接口**
 
 springAPI接口实现
 
@@ -1565,7 +1510,6 @@ applicationContext.xml
     </aop:config>
 
 </beans>
-1234567891011121314151617181920212223242526
 ```
 
 execution(返回类型，类名，方法名(参数)) -> execution(* com.service.*,*(…))
@@ -1580,7 +1524,6 @@ public interface UserService {
 	    public void query() ;
 	    public void update();
 }
-1234567
 ```
 
 UserService 的实现类 UserServiceImp.java
@@ -1603,7 +1546,6 @@ public class UserServiceImpl implements UserService {
         System.out.println("query查");
     }
 }
-1234567891011121314151617
 ```
 
 前置Log.java
@@ -1621,7 +1563,6 @@ public class Log implements MethodBeforeAdvice {
         System.out.println(target.getClass().getName()+"的"+method.getName()+"被执行了");
     }
 }
-123456789101112
 ```
 
 后置AfterLog.java
@@ -1637,7 +1578,6 @@ public class AfterLog implements AfterReturningAdvice {
     	System.out.println("执行了"+method.getName()+"方法，返回值是"+returnValue);
     }
 }
-12345678910
 ```
 
 测试类MyTest5
@@ -1655,10 +1595,9 @@ public class MyTest5 {
         userService.add();
     }
 }
-123456789101112
 ```
 
-#### 11.3.2、方法二：自定义类实现AOP
+* **方法二：自定义类实现AOP**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1687,7 +1626,7 @@ public class MyTest5 {
    </aop:config>
 
 </beans>
-1234567891011121314151617181920212223242526
+
 package diy;
 public class DiyPointcut {
 
@@ -1699,7 +1638,7 @@ public class DiyPointcut {
         System.out.println("插入到后面");
     }
 }
-1234567891011
+
 //测试
 public class MyTest5 {
     public static void main(String[] args) {
@@ -1709,10 +1648,9 @@ public class MyTest5 {
         userService.add();
     }
 }
-123456789
 ```
 
-#### 11.3.3、方法三：使用注解实现
+* **方法三：使用注解实现**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1735,7 +1673,6 @@ public class MyTest5 {
 	<aop:aspectj-autoproxy/>
     
 </beans>
-1234567891011121314151617181920
 ```
 
 DiyAnnotation.java
@@ -1771,7 +1708,6 @@ public class DiyAnnotation {
         System.out.println("环绕后");
     }
 }
-123456789101112131415161718192021222324252627282930
 ```
 
 测试
@@ -1785,14 +1721,13 @@ public class MyTest5 {
         userService.add();
     }
 }
-12345678
 ```
 
 输出结果：
 
 ![image-20200803175642064](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDMxNzU2NDIwNjQucG5n?x-oss-process=image/format,png)
 
-## 12、整合mybatis
+## 12. 整合mybatis
 
 mybatis-spring官网：https://mybatis.org/spring/zh/
 
@@ -1804,7 +1739,7 @@ mybatis-spring官网：https://mybatis.org/spring/zh/
 4. 编写Mapper.xmi
 5. 测试
 
-### 12.1、mybatis-spring-方式一
+**mybatis-spring-方式一**
 
 1. 编写数据源配置
 2. sqISessionFactory
@@ -1886,7 +1821,6 @@ mybatis-spring官网：https://mybatis.org/spring/zh/
     </resource>
 </resources>
 </build>
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970
 ```
 
 ![文件路径](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vd29fYmVsbC9QaWN0dXJlQmVkL3Jhdy9tYXN0ZXIvaW1hZ2UvaW1hZ2UtMjAyMDA4MDQxMjMyMTA1NjAucG5n?x-oss-process=image/format,png)
@@ -1906,7 +1840,6 @@ public class User {
 	private String name;
 	private String pwd;
 }
-12345678
 ```
 
 mapper目录下的 UserMapper、UserMapperImpl、UserMapper.xml
@@ -1920,7 +1853,6 @@ import pojo.User;
 public interface UserMapper {
 	public List<User> getUser();
 }
-123456
 ```
 
 UserMapperImpl
@@ -1945,7 +1877,6 @@ public class UserMapperImpl implements UserMapper{
 		return mapper.getUser();
 	}
 }
-12345678910111213141516171819
 ```
 
 UserMapper.xml （狂神给面子才留下来的）
@@ -1962,7 +1893,6 @@ UserMapper.xml （狂神给面子才留下来的）
 		select * from mybatis.mybatis
 	</select>
 </mapper>
-1234567891011
 ```
 
 resource目录下的 mybatis-config.xml、spring-dao.xml、applicationContext.xml
@@ -1986,7 +1916,6 @@ mybatis-config.xml
 	</typeAliases>
 
 </configuration>
-12345678910111213141516
 ```
 
 spring-dao.xml
@@ -2027,7 +1956,6 @@ spring-dao.xml
     </bean>
 		
 </beans>
-1234567891011121314151617181920212223242526272829303132333435
 ```
 
 applicationContext.xml
@@ -2050,7 +1978,6 @@ applicationContext.xml
     </bean>
 
 </beans>
-1234567891011121314151617
 ```
 
 测试类
@@ -2072,10 +1999,9 @@ public class MyTest6 {
 		}
 	}
 }
-12345678910111213141516
 ```
 
-### 12.2、mybatis-spring-方式二
+**mybatis-spring-方式二**
 
 UserServiceImpl2
 
@@ -2094,7 +2020,6 @@ public class UserMapperImpl2 extends SqlSessionDaoSupport implements UserMapper 
         //或者一句话：return getSqlSession().getMapper(UserMapper.class).getUser();
     }
 }
-1234567891011121314
 ```
 
 spring-dao.xml
@@ -2131,7 +2056,6 @@ spring-dao.xml
 	<!-- 方法二：SqlSessionTemplate 可以不写了-->
     
 </beans>
-12345678910111213141516171819202122232425262728293031
 ```
 
 applicationContext.xml
@@ -2153,7 +2077,6 @@ applicationContext.xml
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 </beans>
-12345678910111213141516
 ```
 
 测试
@@ -2168,8 +2091,9 @@ public class MyTest6 {
 		}
 	}
 }
-123456789
 ```
+
+
 
 ## 13. 声明式事务
 
@@ -2265,7 +2189,6 @@ Spring中的事务管理
     </resource>
 </resources>
 </build>
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970
 ```
 
 **代码步骤：**
@@ -2286,7 +2209,6 @@ public class User {
 	private String name;
 	private String pwd;
 }
-12345678910111213
 ```
 
 mapper目录下的 UserMapper、UserMapperImpl、UserMapper.xml
@@ -2306,7 +2228,6 @@ public interface UserMapper {
 	
 	public int delUser(@Param("id") int id); 
 }
-123456789101112
 ```
 
 UserMapperImpl
@@ -2338,7 +2259,6 @@ public class UserMapperImpl extends SqlSessionDaoSupport implements UserMapper {
 		return getSqlSession().getMapper(UserMapper.class).delUser(id);
 	}
 }
-1234567891011121314151617181920212223242526
 ```
 
 UserMapper.xml
@@ -2365,7 +2285,6 @@ UserMapper.xml
 	</delete>
 
 </mapper>
-123456789101112131415161718192021
 ```
 
 resource目录下的 mybatis-config.xml、spring-dao.xml、applicationContext.xml
@@ -2391,7 +2310,6 @@ mybatis-config.xml
 	</typeAliases>
 
 </configuration>
-123456789101112131415161718
 ```
 
 spring-dao.xml（已导入约束）
@@ -2453,7 +2371,6 @@ spring-dao.xml（已导入约束）
     </aop:config>
 
 </beans>
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556
 ```
 
 applicationContext.xml
@@ -2474,7 +2391,6 @@ applicationContext.xml
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 </beans>
-123456789101112131415
 ```
 
 测试类
@@ -2496,7 +2412,6 @@ public class MyTest7 {
 		}
 	}
 }
-12345678910111213141516
 ```
 
 **思考：**
